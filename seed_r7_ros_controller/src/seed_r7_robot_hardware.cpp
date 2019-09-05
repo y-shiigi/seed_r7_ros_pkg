@@ -354,4 +354,11 @@ namespace robot_hardware
     bat_vol_pub_.publish(voltage);
   }
 
+  void RobotHW::runLEDScript(uint8_t _number, uint16_t _script)
+  {
+    mutex_lower_.lock();
+    controller_lower_->runScript(_number, _script);
+    mutex_lower_.unlock();
+  }  
+
 }
