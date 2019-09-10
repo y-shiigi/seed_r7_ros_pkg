@@ -1,8 +1,22 @@
 <?xml version="1.0"?>
 <launch>
-  <include file="$(find seed_r7_bringup)/launch/seed_r7_bringup.launch" />
-  <include file="$(find seed_r7_typef_moveit_config)/launch/move_group.launch" />
-  <include file="$(find seed_r7_typef_moveit_config)/launch/moveit_rviz.launch" >
-    <arg name="config" value="True"/>
+  <arg name ="robot_model" default="arm_typeA"/>
+
+  <include file="$(find seed_r7_bringup)/launch/seed_r7_bringup.launch" >
+    <arg name="robot_model" value="$(arg robot_model)"/>
   </include>
+
+  <group if="$(eval robot_model== 'typeF')">
+    <include file="$(find seed_r7_typef_moveit_config)/launch/move_group.launch" />
+    <include file="$(find seed_r7_typef_moveit_config)/launch/moveit_rviz.launch" >
+      <arg name="config" value="True"/>
+    </include>
+  </group>
+
+  <group if="$(eval robot_model== 'arm_typeA')">
+    <include file="$(find seed_r7_arm_typea_moveit_config)/launch/move_group.launch" />
+    <include file="$(find seed_r7_arm_typea_moveit_config)/launch/moveit_rviz.launch" >
+      <arg name="config" value="True"/>
+    </include>
+  </group>
 </launch>

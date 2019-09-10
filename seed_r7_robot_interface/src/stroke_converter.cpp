@@ -8,14 +8,14 @@ StrokeConverter::StrokeConverter(ros::NodeHandle _nh, std::string _robot_model) 
   ROS_INFO("start to make stroke convert table");
   //make table and inverse table
   if(makeTable(shoulder_p.table, "shoulder_p")) makeInvTable(shoulder_p.inv_table,shoulder_p.table);
-  if(makeTable(shoulder_r.table, "shoulder_r")) makeInvTable(shoulder_r.inv_table,shoulder_r.table);
+  //if(makeTable(shoulder_r.table, "shoulder_r")) makeInvTable(shoulder_r.inv_table,shoulder_r.table);
   if(makeTable(elbow_p.table, "elbow_p")) makeInvTable(elbow_p.inv_table,elbow_p.table);
   if(makeTable(wrist_p.table, "wrist_p")) makeInvTable(wrist_p.inv_table,wrist_p.table);
   if(makeTable(wrist_r.table, "wrist_r")) makeInvTable(wrist_r.inv_table,wrist_r.table);
-  if(makeTable(neck_p.table, "neck_p")) makeInvTable(neck_p.inv_table,neck_p.table);
-  if(makeTable(neck_r.table, "neck_r")) makeInvTable(neck_r.inv_table,neck_r.table);
-  if(makeTable(waist_p.table, "waist_p")) makeInvTable(waist_p.inv_table,waist_p.table);
-  if(makeTable(waist_r.table, "waist_r")) makeInvTable(waist_r.inv_table,waist_r.table);
+  //if(makeTable(neck_p.table, "neck_p")) makeInvTable(neck_p.inv_table,neck_p.table);
+  //if(makeTable(neck_r.table, "neck_r")) makeInvTable(neck_r.inv_table,neck_r.table);
+  //if(makeTable(waist_p.table, "waist_p")) makeInvTable(waist_p.inv_table,waist_p.table);
+  //if(makeTable(waist_r.table, "waist_r")) makeInvTable(waist_r.inv_table,waist_r.table);
   if(makeTable(leg.table, "leg")) makeInvTable(leg.inv_table,leg.table);
 
   ROS_INFO("finish to make stroke convert table");
@@ -72,8 +72,8 @@ void StrokeConverter::Angle2Stroke (std::vector<int16_t>& _strokes, const std::v
 
     _strokes[0] = scale * rad2Deg * _angles[0];
 
-    _strokes[1] = scale * setAngleToStroke(-rad2Deg * _angles[1], shoulder_p.table);
-    _strokes[2] = scale * setAngleToStroke(180 + rad2Deg * _angles[2], elbow_p.table);
+    _strokes[1] = scale * setAngleToStroke(rad2Deg * _angles[1], shoulder_p.table);
+    _strokes[2] = scale * setAngleToStroke(rad2Deg * _angles[2], elbow_p.table);
     _strokes[3] = -scale * rad2Deg * _angles[3];
     _strokes[4] = scale * wrist.one;
     _strokes[5] = scale * wrist.two;
@@ -131,12 +131,12 @@ void StrokeConverter::Stroke2Angle (std::vector<double>& _angles, const std::vec
   else if(robot_model_ == "arm_typeA"){
     _angles[0] = deg2Rad * scale * _strokes[0];
 
-    _angles[1] = -deg2Rad * setStrokeToAngle(scale * _strokes[1], shoulder_p.inv_table);
-    _angles[2] = - M_PI + deg2Rad * setStrokeToAngle(scale * _strokes[2], elbow_p.inv_table);
+    _angles[1] = deg2Rad * setStrokeToAngle(scale * _strokes[1], shoulder_p.inv_table);
+    _angles[2] = deg2Rad * setStrokeToAngle(scale * _strokes[2], elbow_p.inv_table);
     _angles[3] = -deg2Rad * scale * _strokes[3];
     _angles[4] = -deg2Rad * setStrokeToAngle(scale * (_strokes[5] - _strokes[4]) * 0.5, wrist_p.inv_table);
     _angles[5] = deg2Rad * setStrokeToAngle(scale * (_strokes[5] + _strokes[4]) * 0.5, wrist_r.inv_table);
-    _angles[6] = deg2Rad * (scale * _strokes[6] * 5.556 - 50.0);
+    _angles[6] = deg2Rad * (scale * _strokes[9] * 5.556 - 50.0);
     _angles[7] = 0;
     _angles[8] = 0;
     _angles[9] = -deg2Rad * (scale * _strokes[9] * 5.556 - 50.0);
