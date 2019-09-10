@@ -67,6 +67,21 @@ void StrokeConverter::Angle2Stroke (std::vector<int16_t>& _strokes, const std::v
     _strokes[28] = scale * setAngleToStroke(- rad2Deg * _angles[28], leg.table);  //knee
     _strokes[29] = scale * setAngleToStroke(  rad2Deg * _angles[29], leg.table);  //ankle
   }
+  else if(robot_model_ == "arm_typeA"){
+    DiffJoint wrist = setDualAngleToStroke(rad2Deg * _angles[5], -rad2Deg * _angles[4], wrist_r.table, wrist_p.table,"pitch");
+
+    _strokes[0] = scale * rad2Deg * _angles[0];
+
+    _strokes[1] = scale * setAngleToStroke(-rad2Deg * _angles[1], shoulder_p.table);
+    _strokes[2] = scale * setAngleToStroke(180 + rad2Deg * _angles[2], elbow_p.table);
+    _strokes[3] = -scale * rad2Deg * _angles[3];
+    _strokes[4] = scale * wrist.one;
+    _strokes[5] = scale * wrist.two;
+    _strokes[9] = scale * (rad2Deg * _angles[9] + 50.0) * 0.18;
+
+    _strokes[10] = scale * setAngleToStroke(- rad2Deg * _angles[10], leg.table);  //knee
+    _strokes[11] = scale * setAngleToStroke(  rad2Deg * _angles[11], leg.table);  //ankle
+  }
   else{
     ROS_ERROR("not supported %s in stroke_converter.cpp", robot_model_.c_str());
   }
@@ -112,6 +127,22 @@ void StrokeConverter::Stroke2Angle (std::vector<double>& _angles, const std::vec
 
     _angles[28] = -deg2Rad * setStrokeToAngle(scale * _strokes[28], leg.inv_table);  //knee
     _angles[29] = deg2Rad * setStrokeToAngle(scale * _strokes[29], leg.inv_table);  //ankle
+  }
+  else if(robot_model_ == "arm_typeA"){
+    _angles[0] = deg2Rad * scale * _strokes[0];
+
+    _angles[1] = -deg2Rad * setStrokeToAngle(scale * _strokes[1], shoulder_p.inv_table);
+    _angles[2] = - M_PI + deg2Rad * setStrokeToAngle(scale * _strokes[2], elbow_p.inv_table);
+    _angles[3] = -deg2Rad * scale * _strokes[3];
+    _angles[4] = -deg2Rad * setStrokeToAngle(scale * (_strokes[5] - _strokes[4]) * 0.5, wrist_p.inv_table);
+    _angles[5] = deg2Rad * setStrokeToAngle(scale * (_strokes[5] + _strokes[4]) * 0.5, wrist_r.inv_table);
+    _angles[6] = deg2Rad * (scale * _strokes[6] * 5.556 - 50.0);
+    _angles[7] = 0;
+    _angles[8] = 0;
+    _angles[9] = -deg2Rad * (scale * _strokes[9] * 5.556 - 50.0);
+
+    _angles[10] = -deg2Rad * setStrokeToAngle(scale * _strokes[10], leg.inv_table);  //knee
+    _angles[11] = deg2Rad * setStrokeToAngle(scale * _strokes[11], leg.inv_table);  //ankle
   }
   else{
     ROS_ERROR("not supported %s in stroke_converter.cpp", robot_model_.c_str());
