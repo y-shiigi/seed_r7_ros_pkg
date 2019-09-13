@@ -134,7 +134,7 @@ void StrokeConverter::Stroke2Angle (std::vector<double>& _angles, const std::vec
     _angles[1] = deg2Rad * setStrokeToAngle(scale * _strokes[1], shoulder_p.inv_table);
     _angles[2] = deg2Rad * setStrokeToAngle(scale * _strokes[2], elbow_p.inv_table);
     _angles[3] = -deg2Rad * scale * _strokes[3];
-    _angles[4] = -deg2Rad * setStrokeToAngle(scale * (_strokes[5] - _strokes[4]) * 0.5, wrist_r.inv_table);
+    _angles[4] = deg2Rad * setStrokeToAngle(scale * (_strokes[5] - _strokes[4]) * 0.5, wrist_r.inv_table);
     _angles[5] = deg2Rad * setStrokeToAngle(scale * (_strokes[5] + _strokes[4]) * 0.5, wrist_p.inv_table);
     _angles[6] = deg2Rad * (scale * _strokes[9] * 5.556 - 50.0);
     _angles[7] = 0;
