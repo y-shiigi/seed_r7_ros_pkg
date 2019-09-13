@@ -16,8 +16,6 @@
       <origin rpy="0 0 0" xyz="0 0 0.045"/>
       <geometry>
         <cylinder length="0.07" radius="0.04"/>
-        --&gt;
-        
         <!--<mesh filename="package://seed_r7_description/meshes/typeA_arm/shoulder_y.dae" scale="1 1 1" />-->
       </geometry>
     </collision>
@@ -39,11 +37,10 @@
       </geometry>
     </visual>
     <collision>
-      <origin rpy="0 0 0" xyz="0 0 0.005"/>
+      <origin rpy="0 0 0" xyz="-0.01 0 0.025"/>
       <geometry>
-        <cylinder length="0.01" radius="0.04"/>
-        --&gt;
-        
+        <box size="0.07 0.05 0.05"/>
+        <!--<cylinder length="0.03" radius="0.04"/>-->
         <!--<mesh filename="package://seed_r7_description/meshes/typeA_arm/shoulder_p.dae" scale="1 1 1" />-->
       </geometry>
     </collision>
@@ -65,11 +62,10 @@
       </geometry>
     </visual>
     <collision>
-      <origin rpy="0 0 0" xyz="0 0 0.14"/>
+      <origin rpy="0 0 0" xyz="-0.02 0 0.16"/>
       <geometry>
-        <cylinder length="0.3" radius="0.04"/>
-        --&gt;
-        
+        <box size="0.1 0.08 0.3"/>
+        <!--<cylinder length="0.3" radius="0.04"/>-->
         <!--<mesh filename="package://seed_r7_description/meshes/typeA_arm/upperarm.dae" scale="1 1 1" />-->
       </geometry>
     </collision>
@@ -91,11 +87,9 @@
       </geometry>
     </visual>
     <collision>
-      <origin rpy="0 0 0" xyz="-0.022 0 0.05"/>
+      <origin rpy="0 0 0" xyz="-0.03 0 0.06"/>
       <geometry>
-        <cylinder length="0.15" radius="0.04"/>
-        --&gt;
-        
+        <cylinder length="0.15" radius="0.035"/>
         <!--<mesh filename="package://seed_r7_description/meshes/typeA_arm/elbow.dae" scale="1 1 1" />-->
       </geometry>
     </collision>
@@ -119,9 +113,8 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0.06"/>
       <geometry>
-        <cylinder length="0.12" radius="0.04"/>
-        --&gt;
-        
+        <box size="0.05 0.08 0.12"/>
+        <!--<cylinder length="0.12" radius="0.04"/>-->
         <!--<mesh filename="package://seed_r7_description/meshes/typeA_arm/forearm.dae" scale="1 1 1" />-->
       </geometry>
     </collision>
@@ -146,8 +139,6 @@
       <origin rpy="1.57 1.57 0" xyz="0 0 0"/>
       <geometry>
         <cylinder length="0.03" radius="0.005"/>
-        --&gt;
-        
         <!--<mesh filename="package://seed_r7_description/meshes/typeA_arm/wrist_r.dae" scale="1 1 1" />-->
       </geometry>
     </collision>
@@ -172,8 +163,6 @@
       <origin rpy="1.570 0 0" xyz="0 0 0"/>
       <geometry>
         <cylinder length="0.03" radius="0.005"/>
-        --&gt;
-        
         <!--<mesh filename="package://seed_r7_description/meshes/typeA_arm/wrist_p.dae" scale="1 1 1" />-->
       </geometry>
     </collision>
@@ -306,7 +295,7 @@
     <origin rpy="0 -0 1.570 " xyz="0 0 0.132"/>
     <axis xyz="0 1 0"/>
     <!-- from -25 to 85 degrees-->
-    <limit effort="100" lower="-0.17" upper="0.17" velocity="1.05"/>
+    <limit effort="100" lower="-0.35" upper="0.35" velocity="1.05"/>
     <dynamics damping="0.2" friction="0"/>
   </joint>
   <transmission name="wrist_r_joint_trans">

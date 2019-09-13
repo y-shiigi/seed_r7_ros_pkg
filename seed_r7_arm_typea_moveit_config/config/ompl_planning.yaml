@@ -147,7 +147,7 @@ arm:
     - SPARS
     - SPARStwo
 lifter:
-  default_planner_config: None
+  default_planner_config: RRTConnect
   planner_configs:
     - SBL
     - EST

@@ -17,7 +17,7 @@
     <xacro:unless value="${disable_mesh}"> <collision>
       <origin xyz="0 0 0.045" rpy="0 0 0"/>
       <geometry>
-        <cylinder length="0.07" radius="0.04"/>-->
+        <cylinder length="0.07" radius="0.04"/>
         <!--<mesh filename="package://seed_r7_description/meshes/typeA_arm/shoulder_y.dae" scale="1 1 1" />-->
       </geometry>
     </collision> </xacro:unless>
@@ -37,9 +37,10 @@
       </geometry>
     </visual> </xacro:unless>
     <xacro:unless value="${disable_mesh}"> <collision>
-      <origin xyz="0 0 0.005" rpy="0 0 0"/>
+      <origin xyz="-0.01 0 0.025" rpy="0 0 0"/>
       <geometry>
-        <cylinder length="0.01" radius="0.04"/>-->
+        <box size="0.07 0.05 0.05"/>
+        <!--<cylinder length="0.03" radius="0.04"/>-->
         <!--<mesh filename="package://seed_r7_description/meshes/typeA_arm/shoulder_p.dae" scale="1 1 1" />-->
       </geometry>
     </collision> </xacro:unless>
@@ -59,9 +60,10 @@
       </geometry>
     </visual> </xacro:unless>
     <xacro:unless value="${disable_mesh}"> <collision>
-      <origin xyz="0 0 0.14" rpy="0 0 0"/>
+      <origin xyz="-0.02 0 0.16" rpy="0 0 0"/>
       <geometry>
-        <cylinder length="0.3" radius="0.04"/>-->
+        <box size="0.1 0.08 0.3"/>
+        <!--<cylinder length="0.3" radius="0.04"/>-->
         <!--<mesh filename="package://seed_r7_description/meshes/typeA_arm/upperarm.dae" scale="1 1 1" />-->
       </geometry>
     </collision> </xacro:unless>
@@ -81,9 +83,9 @@
       </geometry>
     </visual> </xacro:unless>
     <xacro:unless value="${disable_mesh}"> <collision>
-      <origin xyz="-0.022 0 0.05" rpy="0 0 0"/>
+      <origin xyz="-0.03 0 0.06" rpy="0 0 0"/>
       <geometry>
-        <cylinder length="0.15" radius="0.04"/>-->
+        <cylinder length="0.15" radius="0.035"/>
         <!--<mesh filename="package://seed_r7_description/meshes/typeA_arm/elbow.dae" scale="1 1 1" />-->
       </geometry>
     </collision> </xacro:unless>
@@ -105,7 +107,8 @@
     <xacro:unless value="${disable_mesh}"> <collision>
       <origin xyz="0 0 0.06" rpy="0 0 0"/>
       <geometry>
-        <cylinder length="0.12" radius="0.04"/>-->
+        <box size="0.05 0.08 0.12"/>
+        <!--<cylinder length="0.12" radius="0.04"/>-->
         <!--<mesh filename="package://seed_r7_description/meshes/typeA_arm/forearm.dae" scale="1 1 1" />-->
       </geometry>
     </collision> </xacro:unless>
@@ -127,7 +130,7 @@
     <xacro:unless value="${disable_mesh}"> <collision>
       <origin xyz="0 0 0" rpy="1.57 1.57 0"/>
       <geometry>
-        <cylinder length="0.03" radius="0.005"/>-->
+        <cylinder length="0.03" radius="0.005"/>
         <!--<mesh filename="package://seed_r7_description/meshes/typeA_arm/wrist_r.dae" scale="1 1 1" />-->
       </geometry>
     </collision> </xacro:unless>
@@ -149,7 +152,7 @@
     <xacro:unless value="${disable_mesh}"> <collision>
       <origin xyz="0 0 0" rpy="1.570 0 0"/>
       <geometry>
-        <cylinder length="0.03" radius="0.005"/>-->
+        <cylinder length="0.03" radius="0.005"/>
         <!--<mesh filename="package://seed_r7_description/meshes/typeA_arm/wrist_p.dae" scale="1 1 1" />-->
       </geometry>
     </collision> </xacro:unless>
@@ -210,7 +213,7 @@
     <origin xyz="0 0 0.132" rpy="0 -0 1.570 "/>
     <axis   xyz="0 1 0"/>
     <!-- from -25 to 85 degrees-->
-    <limit lower="-0.17" upper="0.17" effort="100" velocity="1.05" />
+    <limit lower="-0.35" upper="0.35" effort="100" velocity="1.05" />
     <dynamics damping="0.2" friction="0" />
   </joint>
   <xacro:gazebo_transmission joint_name="wrist_r_joint" />
