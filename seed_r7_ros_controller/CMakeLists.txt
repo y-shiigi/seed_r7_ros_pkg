@@ -30,8 +30,6 @@ find_package(catkin REQUIRED COMPONENTS
 add_service_files(
    FILES
    HandControl.srv
-   LEDControl.srv
-
 )
 generate_messages(
   DEPENDENCIES
@@ -97,15 +95,9 @@ add_library(seed_r7_hand_controllers
 )
 target_link_libraries(seed_r7_hand_controllers ${catkin_LIBRARIES} ${Boost_LIBRARIES})
 
-add_library(seed_r7_led_controllers
-  src/seed_r7_led_controller.cpp
-)
-target_link_libraries(seed_r7_led_controllers ${catkin_LIBRARIES} ${Boost_LIBRARIES})
-
-
 ## Executable
 add_executable(${PROJECT_NAME} src/seed_r7_ros_controller.cpp src/seed_r7_robot_hardware.cpp src/seed_r7_mover_controller.cpp)
-target_link_libraries(${PROJECT_NAME} seed_r7_robot_interface seed_r7_hand_controllers seed_r7_led_controllers ${catkin_LIBRARIES} ${Boost_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} seed_r7_robot_interface seed_r7_hand_controllers ${catkin_LIBRARIES} ${Boost_LIBRARIES})
 
 
 

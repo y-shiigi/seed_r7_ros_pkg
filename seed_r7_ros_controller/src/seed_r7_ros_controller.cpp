@@ -42,7 +42,6 @@
 #include "seed_r7_robot_hardware.h"
 #include "seed_r7_mover_controller.h"
 #include "seed_r7_hand_controller.h"
-#include "seed_r7_led_controller.h"
 
 using namespace robot_hardware;
 
@@ -66,7 +65,6 @@ int main(int argc, char** argv)
   //add extra controller
   MoverController mover_node(nh, &hw);
   HandController hand_node(robot_nh, &hw);
-  LEDController led_node(robot_nh, &hw);
 
   ros::AsyncSpinner spinner(1);
   spinner.start();

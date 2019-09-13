@@ -86,7 +86,6 @@ public:
   void turnWheel(std::vector<int16_t> &_vel);
   void onWheelServo(bool _value);
   void getBatteryVoltage(const ros::TimerEvent& _event);
-  void runLEDScript(uint8_t _number, uint16_t _script);
   //----------------------
 
 protected:
