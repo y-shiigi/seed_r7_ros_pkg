@@ -5,8 +5,8 @@ joint_settings:
       - shoulder_p_joint
       - elbow_joint
       - wrist_y_joint
-      - wrist_p_joint
       - wrist_r_joint
+      - wrist_p_joint
       - r_indexbase_joint #passive
       - r_indexmid_joint #passive
       - r_indexend_joint #passive

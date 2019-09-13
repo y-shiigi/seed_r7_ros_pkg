@@ -68,9 +68,9 @@ void StrokeConverter::Angle2Stroke (std::vector<int16_t>& _strokes, const std::v
     _strokes[29] = scale * setAngleToStroke(  rad2Deg * _angles[29], leg.table);  //ankle
   }
   else if(robot_model_ == "arm_typeA"){
-    DiffJoint wrist = setDualAngleToStroke(rad2Deg * _angles[5], -rad2Deg * _angles[4], wrist_r.table, wrist_p.table,"pitch");
+    DiffJoint wrist = setDualAngleToStroke(rad2Deg * _angles[5], -rad2Deg * _angles[4], wrist_p.table, wrist_r.table,"pitch");
 
-    _strokes[0] = scale * rad2Deg * _angles[0];
+    _strokes[0] = -scale * rad2Deg * _angles[0];
 
     _strokes[1] = scale * setAngleToStroke(rad2Deg * _angles[1], shoulder_p.table);
     _strokes[2] = scale * setAngleToStroke(rad2Deg * _angles[2], elbow_p.table);
@@ -129,13 +129,13 @@ void StrokeConverter::Stroke2Angle (std::vector<double>& _angles, const std::vec
     _angles[29] = deg2Rad * setStrokeToAngle(scale * _strokes[29], leg.inv_table);  //ankle
   }
   else if(robot_model_ == "arm_typeA"){
-    _angles[0] = deg2Rad * scale * _strokes[0];
+    _angles[0] = -deg2Rad * scale * _strokes[0];
 
     _angles[1] = deg2Rad * setStrokeToAngle(scale * _strokes[1], shoulder_p.inv_table);
     _angles[2] = deg2Rad * setStrokeToAngle(scale * _strokes[2], elbow_p.inv_table);
     _angles[3] = -deg2Rad * scale * _strokes[3];
-    _angles[4] = -deg2Rad * setStrokeToAngle(scale * (_strokes[5] - _strokes[4]) * 0.5, wrist_p.inv_table);
-    _angles[5] = deg2Rad * setStrokeToAngle(scale * (_strokes[5] + _strokes[4]) * 0.5, wrist_r.inv_table);
+    _angles[4] = -deg2Rad * setStrokeToAngle(scale * (_strokes[5] - _strokes[4]) * 0.5, wrist_r.inv_table);
+    _angles[5] = deg2Rad * setStrokeToAngle(scale * (_strokes[5] + _strokes[4]) * 0.5, wrist_p.inv_table);
     _angles[6] = deg2Rad * (scale * _strokes[9] * 5.556 - 50.0);
     _angles[7] = 0;
     _angles[8] = 0;
