@@ -235,6 +235,8 @@
     <disable_collisions link1="lifter_top_link" link2="wheels_rear_right_mecanum" reason="Never" />
     <disable_collisions link1="lifter_top_link" link2="wheels_top_link" reason="Never" />
     <disable_collisions link1="r_hand_link" link2="r_indexbase_link" reason="Adjacent" />
+    <disable_collisions link1="r_hand_link" link2="r_indexend_link" reason="User" />
+    <disable_collisions link1="r_hand_link" link2="r_indexmid_link" reason="User" />
     <disable_collisions link1="r_hand_link" link2="r_thumb_link" reason="Adjacent" />
     <disable_collisions link1="r_hand_link" link2="wheels_front_left_mecanum" reason="Never" />
     <disable_collisions link1="r_hand_link" link2="wheels_front_right_mecanum" reason="Never" />
@@ -242,7 +244,10 @@
     <disable_collisions link1="r_hand_link" link2="wheels_rear_right_mecanum" reason="Never" />
     <disable_collisions link1="r_hand_link" link2="wheels_top_link" reason="Never" />
     <disable_collisions link1="r_hand_link" link2="wrist_p_link" reason="Adjacent" />
+    <disable_collisions link1="r_hand_link" link2="wrist_r_link" reason="User" />
+    <disable_collisions link1="r_indexbase_link" link2="r_indexend_link" reason="User" />
     <disable_collisions link1="r_indexbase_link" link2="r_indexmid_link" reason="Adjacent" />
+    <disable_collisions link1="r_indexbase_link" link2="r_thumb_link" reason="User" />
     <disable_collisions link1="r_indexbase_link" link2="wheels_front_left_mecanum" reason="Never" />
     <disable_collisions link1="r_indexbase_link" link2="wheels_front_right_mecanum" reason="Never" />
     <disable_collisions link1="r_indexbase_link" link2="wheels_rear_left_mecanum" reason="Never" />
@@ -259,6 +264,7 @@
     <disable_collisions link1="r_indexend_link" link2="wheels_top_link" reason="Never" />
     <disable_collisions link1="r_indexend_link" link2="wrist_p_link" reason="Never" />
     <disable_collisions link1="r_indexend_link" link2="wrist_r_link" reason="Never" />
+    <disable_collisions link1="r_indexmid_link" link2="r_thumb_link" reason="User" />
     <disable_collisions link1="r_indexmid_link" link2="wheels_front_left_mecanum" reason="Never" />
     <disable_collisions link1="r_indexmid_link" link2="wheels_front_right_mecanum" reason="Never" />
     <disable_collisions link1="r_indexmid_link" link2="wheels_rear_left_mecanum" reason="Never" />
@@ -272,6 +278,8 @@
     <disable_collisions link1="r_thumb_link" link2="wheels_rear_left_mecanum" reason="Never" />
     <disable_collisions link1="r_thumb_link" link2="wheels_rear_right_mecanum" reason="Never" />
     <disable_collisions link1="r_thumb_link" link2="wheels_top_link" reason="Never" />
+    <disable_collisions link1="r_thumb_link" link2="wrist_p_link" reason="User" />
+    <disable_collisions link1="r_thumb_link" link2="wrist_r_link" reason="User" />
     <disable_collisions link1="shoulder_link" link2="upperarm_link" reason="Adjacent" />
     <disable_collisions link1="shoulder_link" link2="waist_link" reason="Adjacent" />
     <disable_collisions link1="shoulder_link" link2="wheel_base_link" reason="Never" />
