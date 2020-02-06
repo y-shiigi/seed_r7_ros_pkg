@@ -18,25 +18,12 @@ int main(int argc, char** argv)
   moveit::planning_interface::MoveGroupInterface::Plan my_plan;
   geometry_msgs::Pose target_pose1,target_pose2,target_pose3;
 
-/*
+  //--- set registerd position ---
   moveit::planning_interface::MoveGroupInterface move_group_arms("upper_body");
   move_group_arms.setPoseReferenceFrame("base_link");
-
-  target_pose1.orientation = rpy_to_geometry_quat(-1.57,0.79,0);
-  target_pose1.position.x = 0.3;
-  target_pose1.position.y = -0.2;
-  target_pose1.position.z = 1.0;
-
-  target_pose2.orientation = rpy_to_geometry_quat(1.57,0.79,0);
-  target_pose2.position.x = 0.3;
-  target_pose2.position.y = 0.2;
-  target_pose2.position.z = 1.0;
-  move_group_arms.setPoseTarget(target_pose1,"r_eef_grasp_link");
-  move_group_arms.setPoseTarget(target_pose2,"l_eef_grasp_link");
-
-  bool success = (move_group_arms.plan(my_plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
-  if(success)move_group_arms.execute(my_plan);
-  */
+  move_group_arms.setNamedTarget("reset-pose");
+  move_group_arms.move();
+  //------------------------------
 
   //--- right arm without waist ---
   moveit::planning_interface::MoveGroupInterface move_group_right("rarm");
@@ -68,10 +55,7 @@ int main(int argc, char** argv)
   if(success)move_group_left.execute(my_plan);
   //-----------------------
 
-  //--- with both arm ---
-  moveit::planning_interface::MoveGroupInterface move_group_arms("upper_body");
-  move_group_arms.setPoseReferenceFrame("base_link");
-
+  //--- with both arms ---
   target_pose1.position.x += 0.2;
   target_pose2.position.x += 0.2;
 
