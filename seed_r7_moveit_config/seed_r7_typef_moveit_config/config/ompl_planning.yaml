@@ -508,3 +508,31 @@ whole_body:
     - SPARStwo
   projection_evaluator: joints(ankle_joint,ankle_joint_mimic)
   longest_valid_segment_fraction: 0.005
+both_arms:
+  default_planner_config: ""
+  planner_configs:
+    - SBL
+    - EST
+    - LBKPIECE
+    - BKPIECE
+    - KPIECE
+    - RRT
+    - RRTConnect
+    - RRTstar
+    - TRRT
+    - PRM
+    - PRMstar
+    - FMT
+    - BFMT
+    - PDST
+    - STRIDE
+    - BiTRRT
+    - LBTRRT
+    - BiEST
+    - ProjEST
+    - LazyPRM
+    - LazyPRMstar
+    - SPARS
+    - SPARStwo
+  projection_evaluator: joints(waist_y_joint,waist_p_joint)
+  longest_valid_segment_fraction: 0.005
