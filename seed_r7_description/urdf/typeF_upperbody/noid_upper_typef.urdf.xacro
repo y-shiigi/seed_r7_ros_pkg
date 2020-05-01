@@ -617,5 +617,20 @@
     <dynamics damping="0.2" friction="0" />
   </joint>
   <xacro:gazebo_transmission joint_name="r_wrist_r_joint" />
+
+  <link name="chest_camera_link"/>
+    <joint name="body_link_to_chest_camera_link" type="fixed">
+      <parent  link="body_link"/>
+      <child link="chest_camera_link"/>
+      <origin xyz="0.062143 0.0 0.322289 " rpy="0 0.785398 0"/>
+    </joint>
+
+    <link name="chest_camera_right_ir_frame"/>
+    <joint name="chest_camera_link_to_chest_camera_right_ir_link" type="fixed">
+      <parent  link="chest_camera_link"/>
+      <child link="chest_camera_right_ir_frame"/>
+      <origin xyz="0 -0.055 0" rpy="0 0 0"/>  <!-- realsense d415-->
+    </joint>
+
   </xacro:macro>
 </robot>
