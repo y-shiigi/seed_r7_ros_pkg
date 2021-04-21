@@ -171,6 +171,9 @@ namespace robot_hardware
     bat_vol_pub_ = robot_hw_nh.advertise<std_msgs::Float32>("voltage", 1);
     bat_vol_timer_ = robot_hw_nh.createTimer(ros::Duration(1), &RobotHW::getBatteryVoltage,this);
 
+    // Joy Publisher
+    joy_pub_ = robot_hw_nh.advertise<sensor_msgs::Joy>("/cosmo/joy",1);
+
     // Get Robot Firmware Version
     ROS_INFO("Upper Firmware Ver. is [ %s ]", controller_upper_->getFirmwareVersion().c_str() );
     ROS_INFO("Lower Firmware Ver. is [ %s ]", controller_lower_->getFirmwareVersion().c_str() );
@@ -335,6 +338,11 @@ namespace robot_hardware
     }
     mutex_upper_.unlock();
     mutex_lower_.unlock();
+
+    //send Joy
+    if(controller_lower_->enable_joy_){
+      joy_pub_.publish(controller_lower_->joy_);
+    }
 
     // read
     readPos(time, period, false);

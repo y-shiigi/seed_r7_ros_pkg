@@ -2,8 +2,8 @@
 #define _LOWER_CONTROLLER_H_
 
 #include <ros/ros.h>
+#include <sensor_msgs/Joy.h>
 #include "seed_smartactuator_sdk/aero3_command.h"
-
 
 namespace robot_hardware
 {
@@ -25,6 +25,7 @@ class LowerController
     std::string getFirmwareVersion();
     void getRobotStatus(int8_t _number);
     void checkRobotStatus();
+    void setJoy(std::vector<uint8_t>& _data);
 
     bool is_open_;
     std::vector<int16_t> raw_data_;
@@ -38,7 +39,10 @@ class LowerController
     std::vector<int> wheel_aero_index_;
     std::vector<std::pair<int,std::string>> wheel_table_;
 
+    sensor_msgs::Joy joy_;
+
     bool comm_err_;
+    bool enable_joy_;
     struct RobotStatus {
       bool connection_err_;
       bool calib_err_;

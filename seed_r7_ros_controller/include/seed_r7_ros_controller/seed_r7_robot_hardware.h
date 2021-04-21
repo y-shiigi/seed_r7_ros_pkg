@@ -48,6 +48,7 @@
 // ROS
 #include <ros/ros.h>
 #include <std_msgs/Float32.h>
+#include <geometry_msgs/Twist.h>
 #include <pluginlib/class_loader.h>
 
 // URDF
@@ -157,6 +158,9 @@ protected:
 
   ros::Timer bat_vol_timer_;
   ros::Publisher bat_vol_pub_;
+
+  ros::Publisher joy_pub_;
+  sensor_msgs::Joy joy_;
 
   pluginlib::ClassLoader<seed_converter::StrokeConverter> converter_loader_;
   boost::shared_ptr<seed_converter::StrokeConverter> stroke_converter_;
