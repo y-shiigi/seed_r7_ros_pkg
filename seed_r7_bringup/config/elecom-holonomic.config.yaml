@@ -16,4 +16,4 @@ scale_angular_turbo:
   yaw: 1.0
 
 enable_button: 4       #L1 button
-enable_turbo_button: 6  #L2 button
+enable_turbo_button: -1  #Turbo mode has some problems, so currently disable
